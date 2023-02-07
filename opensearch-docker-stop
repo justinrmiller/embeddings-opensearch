@@ -1,0 +1,2 @@
+docker stop opensearch-node
+
