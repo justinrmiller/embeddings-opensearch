@@ -1,0 +1,6 @@
+opensearch-py
+sentence_transformers
+torch
+pandas
+tqdm
+

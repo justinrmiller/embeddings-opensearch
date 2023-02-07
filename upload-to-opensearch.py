@@ -17,14 +17,14 @@ client = OpenSearch(
 )
 
 FILENAME = "RAW_recipes.zip"
-device = "cuda:0" if torch.cuda.is_available() else "cpu"
-# device="mps"
+# device = "cuda:0" if torch.cuda.is_available() else "cpu"
+device="mps"
 
-model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2").to(device)
 
 
 # Upload dataset to Openserach
-chunksize = 300
+chunksize = 600
 lines = 267782  # wc -l RAW_recipes.csv
 reader = pd.read_csv(
     FILENAME, chunksize=chunksize, usecols=["name", "id", "description"]
@@ -32,7 +32,6 @@ reader = pd.read_csv(
 
 with tqdm(total=lines) as pbar:
     for i, chunk in enumerate(reader):
-        print(i)
         # Remove NaN
         chunk.fillna("", inplace=True)
         docs = chunk.to_dict(orient="records")
