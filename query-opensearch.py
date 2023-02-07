@@ -3,7 +3,6 @@ from opensearchpy import OpenSearch
 import torch
 from pprint import pprint
 
-FILENAME = "/home/pk/Projects/blog/simmilarity-search-using-knn/RAW_recipes.zip"
 INDEX_NAME = "recipes"
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
