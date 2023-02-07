@@ -17,8 +17,8 @@ client = OpenSearch(
 )
 
 FILENAME = "RAW_recipes.zip"
-# device = "cuda:0" if torch.cuda.is_available() else "cpu"
-device="mps"
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
+# device="mps"
 
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
